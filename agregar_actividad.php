@@ -1,4 +1,7 @@
-<? include("top.php");?>
+<? include("top.php");
+session_start();
+$correo=$_SESSION['correo'];
+?>
 <html>
 <head>
 	<link href='http://fonts.googleapis.com/css?family=Prosto+One' rel='stylesheet' type='text/css'>
@@ -110,11 +113,41 @@ window.onerror = new Function("return true")
 	mysql_query("INSERT INTO calendario_general (id_responsable,dia,id_mes,anio,id_area,id_actividad,id_clienteexterno,id_particularidad,hora) VALUES ('$id_responsable','$dia_n','$id_mes_nuevo', '$anio_nuevo','$id_area','$id_actividad','$id_clienteexterno','$id_particularidad','$hora')");
 	$registro=mysql_insert_id();
 	mysql_query("INSERT INTO calendario_log(suceso,user) VALUES ('Agrego una Actividad <Datos> id: $registro   Aignada a: $id_responsable  Actividad: $id_actividad','$_SESSION[u_name]')");
+	require("mail/class.phpmailer.php"); 
+	$mail = new PHPMailer(); 
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->Host = "smtp.cimexico.mx"; 
+	$mail->Username = "noresponder@cimexico.mx"; 
+	$mail->Password = "cimexnr2012"; 
+	$mail->Port = 25;  
+	$mail->From = "noresponder@cimexico.mx";
+	$mail->FromName = "Notificacion Calendario";   
+	$mail->AddAddress($correo);
+	$mail->IsHTML(true);
+	$mail->Subject = "Nueva Actividad ".date('d/m/Y');
+	$body = "
+	<br>
+	<br>
+	<div align='center'><h1>Una nueva actividad se te asigno</h1> 
+	<br>
+	<br>
+	</div><p>Por favor accesar al sitio <a href='http://192.168.0.184/calendario/'>Acceso</a></p>
+	<br>";
+	$mail->Body = $body; 
+	$exito = $mail->Send();  
+	if($exito){
+		$mensaje="Se envio notificacion";
+	}else{
+		$mensaje="No se envio la notificacion por favor avisar al departamento de sistemas";
+	}
 	?>
 	<br><br><br>
 	<hr style="width:70%">
 	 <div align="center"><h3 style="color:red">GUARDADO</h3></div>
-	 <br><br>
+	 <br>
+	 <div align="center"><? echo $mensaje;?></div>
+	 <br>
 	 <div align="center"><a href="javascript:window.opener.location.reload(); self.close();">CERRAR</a></div>
 	 <br>
 	 <hr style="width:70%">
