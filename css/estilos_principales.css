@@ -1,0 +1,136 @@
+.link{
+
+	text-decoration:none;
+	color: white;
+}
+.link:hover{
+
+	color: white;
+	font-size:20px;
+}
+
+.botones{
+
+	font-size:25px;
+	text-decoration:none;
+	color: orange;
+}
+.botones:hover{
+
+	font-size:30px;
+	text-decoration:none;
+	color: orange;
+}
+a{
+	text-decoration:none;
+}
+.td{
+
+	font-size:14px;
+}
+#contenedor{
+	background:#fff;
+	border-bottom-color: yellow;
+	border:3px solid;
+	border-radius:15px;
+	height:570;
+	margin:auto auto;
+	width:670px;
+}
+input, select,textarea {
+	background:rgb(255,255,231);
+}
+
+.blanco{
+
+	background:white;
+}
+
+.link_dos{
+
+	text-decoration:none;
+	color: white;
+}
+.link_dos:hover{
+
+	color: white;
+	font-size:17px;
+}
+
+#contenedor_dos{
+
+	background:#fff;
+	border-bottom-color: yellow;
+	border:3px solid;
+	border-radius:15px;
+	height:500;
+	margin:auto auto;
+	width:480px;
+
+}
+th{
+	background:white;
+}
+#contenedor_completadas{
+	box-shadow:-10px 25px 10px rgba(0,0,0,0.5);
+	display: none;
+	background-color: white;
+	border:4px solid;
+	border-color:#ccc;
+	border-radius:15px;
+	position: absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+}
+#contenedor_vencidas{
+	box-shadow:-10px 25px 10px rgba(0,0,0,0.5);
+	display: none;
+	background-color: white;
+	border:4px solid;
+	border-color:#ccc;
+	border-radius:15px;
+	position: absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+}
+#contenedor_proceso{
+	box-shadow:-10px 25px 10px rgba(0,0,0,0.5);
+	display: none;
+	background-color: white;
+	border:4px solid;
+	border-color:#ccc;
+	border-radius:15px;
+	position: absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+}
+#confirmar{
+background: rgb(0, 0, 0); 
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#886287a9', endColorstr='#886287a7'); 
+background: rgba(0, 0, 0, 0.6); 
+	border-color:yellow;
+	border:0.5px solid;
+	border-radius:15px;
+	box-shadow:5px 5px 10px rgba(0,0,0,0.5);
+	height:150%;
+	left:0px;
+	position: absolute;
+	top:0px;
+	width:102%;
+}
+#confirmar_dos{
+	background:white;
+	border-color:yellow;
+	border:1px solid;
+	border-radius:15px;
+	box-shadow:5px 5px 10px rgba(0,0,0,0.5);
+	height:auto;
+	left:25%;
+	top:50%;
+	position:absolute;
+	width:51%;
+}
+
