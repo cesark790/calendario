@@ -212,24 +212,50 @@ Aplicaciones Calemdario 2012
 	while ($reg=mysql_fetch_array($sql_datos)) {
 		?>
 			<tr style="<?
-			$dia = date('d');
+			$dia_c = date('d');
+			$mes_c=date('m');
 			
+		if($mes_c==$reg['id_mes'])
+		{
+
 			if ($reg['avance']==100) {
 				$color=3;
 				$finalizada_contador+=1;
 			}elseif($reg['avance'] > 0 and $reg['anvace']  <100){
 				$color=4;
 				$proceso_contador+=1;
-			}elseif($reg['dia']==$dia){
+			}elseif($reg['dia']==$dia_c){
 				$color=1;
 				$dia_contador+=1;
-			}elseif($reg['dia']<$dia){
+			}elseif($reg['dia']<$dia_c){
 				$color=2;
 				$vecidos_contador+=1;
 			}else{
 				$color=5;
 			
 			}
+		}
+		elseif($reg['id_mes']<$mes_c)
+		{
+
+			if ($reg['avance']==100) {
+				$color=3;
+				$finalizada_contador+=1;
+			}elseif($reg['avance'] > 0 and $reg['anvace']  <100){
+				$color=4;
+				$proceso_contador+=1;
+			}elseif($reg['avance'] == 0){
+				$color=2;
+				$vecidos_contador+=1;
+			}else{
+				$color=5;			
+				}
+
+
+		}
+		else{
+			$color=5;
+		}
 
 			switch ($color) {
 				case 1: echo " background:rgb(255,255,167);";break;
