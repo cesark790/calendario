@@ -1,6 +1,5 @@
 <?
 if ($_POST['n']==2) {
-
 ?>
 <div align="right">
 	<div style="widht:15px; height:15px;">
@@ -17,6 +16,7 @@ $mes=$_POST['mes'];
 $anio=$_POST['anio'];
 $responsable=$_POST['responsable'];
 $user=$_POST['user'];
+$dia=$_POST['dia'];
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -49,7 +49,7 @@ $(document).ready(function(){
 				type : 'POST',
 				url : 'tabla.php',
 				cache : false,
-				data : 'user=<?echo $user;?>&responsable=<?echo $responsable?>&anio=<?echo $anio;?>&mes=<? echo $mes;?>' ,
+				data : 'user=<?echo $user;?>&responsable=<?echo $responsable?>&anio=<?echo $anio;?>&mes=<? echo $mes;?>&dia=<? echo $dia;?>' ,
 				beforeSend : function(){
 					$('#aceptar').html('Cargando...');
 				},
@@ -80,6 +80,7 @@ $mes=$_POST['mes'];
 $anio=$_POST['anio'];
 $responsable=$_POST['responsable'];
 $user=$_POST['user'];
+$dia=$_POST['dia'];
 ?>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -112,7 +113,7 @@ $(document).ready(function(){
 				type : 'POST',
 				url : 'tabla.php',
 				cache : false,
-				data : 'user=<?echo $user;?>&responsable=<?echo $responsable?>&anio=<?echo $anio;?>&mes=<? echo $mes;?>' ,
+				data : 'user=<?echo $user;?>&responsable=<?echo $responsable?>&anio=<?echo $anio;?>&mes=<? echo $mes;?>&dia=<? echo $dia;?>' ,
 				beforeSend : function(){
 					$('#aceptar').html('Cargando...');
 				},

@@ -129,9 +129,18 @@ Aplicaciones Calemdario 2012
 		$anio_dos=date("Y");	
 		$anio_tres=date("Y");
 		$mes=date("m");
+		$dia=date("d");
+
 	}else{
 		$anio_dos=$anio;
 		$anio_tres=$anio;
+		
+	}
+
+	if(isset($dia)){
+		$dia=$dia;
+	}else{
+		$dia=date("d");
 	}
 
 	
@@ -175,6 +184,24 @@ Aplicaciones Calemdario 2012
 		<td width="11%" align="center" <? if($mes==12){?>style="background:rgb(68,68,68);"<?}?> height="45"><div style="font-size:11px;font-family: 'Prosto One', sans-serif;"><a class="link" href="inicio.php?anio=<? echo $anio;?>&mes=12">DICIEMBRE</a></div></td>		
 		</td>
 	</tr>
+	</table>
+<table align="center" width="85%" border="0" cellpading="0" cellspacing="0">
+
+	<tr><?
+	$dia_empieza=1;	
+	while ($dia_empieza <= 31) {
+		if($dia_empieza==$dia){
+		?>
+		<td align="center" style="background:rgb(117,117,117);color:white;"><? echo $dia_empieza;?></td>
+		<?
+		}else{
+		?>	
+		<td align="center" style="background:rgb(68,68,68);color:white; cursor:pointer;"><a class="link"   href="inicio.php?anio=<? echo $anio;?>&mes=<? echo $mes;?>&dia=<? echo $dia_empieza;?>"><? echo $dia_empieza;?></a></td>
+		<?
+		}
+		$dia_empieza++;
+	}
+	?>
 	</tr>
 
 
@@ -203,7 +230,7 @@ Aplicaciones Calemdario 2012
 		$responsable=$_SESSION['id_responsable_s'];
 	}
 
-	$sql_datos=mysql_query("SELECT * FROM vista_calendario_general WHERE id_responsable like '%$responsable%' and anio ='$anio' and id_mes = '$mes' and estatus = '1' ORDER BY dia");
+	$sql_datos=mysql_query("SELECT * FROM vista_calendario_general WHERE id_responsable like '%$responsable%' and anio ='$anio' and id_mes = '$mes' and estatus = '1' and dia = '$dia' ORDER BY dia");
 
 
 ?>
@@ -406,7 +433,7 @@ var props = {
 				url : 'confirmar.php',
 				type : 'POST',
 				cache : false ,
-				data : "n=2&user=<?echo $user;?>&permiso=<? $_SESSION['permiso_s'];?>&id=" + numero +'&responsable=<? echo $responsable;?>&anio=<? echo $anio;?>&mes=<?echo $mes;?>' ,
+				data : "n=2&user=<?echo $user;?>&permiso=<? $_SESSION['permiso_s'];?>&id=" + numero +'&responsable=<? echo $responsable;?>&anio=<? echo $anio;?>&mes=<?echo $mes;?>&dia=<? echo $dia;?>' ,
 				success : function(data){
 					$('#confirmar_dos').html(data);
 				}
@@ -421,7 +448,7 @@ var props = {
 				url : 'confirmar.php',
 				type : 'POST',
 				cache : false ,
-				data : "n=1&user=<?echo $user;?>&permiso=<? $_SESSION['permiso_s'];?>&id=" + numero +'&responsable=<? echo $responsable;?>&anio=<? echo $anio;?>&mes=<?echo $mes;?>' ,
+				data : "n=1&user=<?echo $user;?>&permiso=<? $_SESSION['permiso_s'];?>&id=" + numero +'&responsable=<? echo $responsable;?>&anio=<? echo $anio;?>&mes=<?echo $mes;?>&dia=<? echo $dia;?>' ,
 				beforeSend : function(){
 					$('#confirmar_dos').html('Cargando...');
 				},

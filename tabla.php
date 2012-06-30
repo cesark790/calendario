@@ -5,6 +5,7 @@ $responsable=$_POST['responsable'];
 $mes=$_POST['mes'];
 $anio=$_POST['anio'];
 $user=$_POST['user'];
+$dia=$_POST['dia'];
 error_reporting(0);
 ?>
 
@@ -30,7 +31,7 @@ error_reporting(0);
 		$responsable=$_SESSION['id_responsable_s'];
 	}
 
-	$sql_datos=mysql_query("SELECT * FROM vista_calendario_general WHERE id_responsable like '%$responsable%' and anio ='$anio' and id_mes = '$mes' and estatus = '1' ORDER BY dia");
+	$sql_datos=mysql_query("SELECT * FROM vista_calendario_general WHERE id_responsable like '%$responsable%' and anio ='$anio' and id_mes = '$mes' and dia = '$dia' and estatus = '1' ORDER BY dia");
 
 
 ?>
